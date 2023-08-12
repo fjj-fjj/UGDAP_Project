@@ -6,8 +6,8 @@ using UnityEngine;
 public class MovePlayer : MonoBehaviour
 {
     public float speed = 500.0f;//玩家的移动速度
-    //public float jumpForce = 20000.0f;//施加在玩家身上并且方向向上的力的大小
-    public float jumpSpeed;
+    public float jumpForce = 20.0f;//施加在玩家身上并且方向向上的力的大小
+    //public float jumpSpeed;
     private Rigidbody2D rgb;//玩家身上的刚体
     private BoxCollider2D boxCollider;//玩家身上的碰撞器
     Animator animator;//玩家身上的动画控制器
@@ -98,6 +98,7 @@ public class MovePlayer : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         animator.SetBool("PrepareJump", false);
         animator.SetBool("Jumping", true);
-        rgb.velocity = new Vector2(rgb.velocity.x, jumpSpeed);
+        //rgb.velocity = new Vector2(rgb.velocity.x, jumpSpeed);
+        rgb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 }

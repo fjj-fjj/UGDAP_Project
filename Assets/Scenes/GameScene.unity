@@ -784,7 +784,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5000
   jumpSpeed: 0
-  gravity: 0
 --- !u!50 &2087950630
 Rigidbody2D:
   serializedVersion: 4
@@ -871,11 +870,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351800990271684110, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
       propertyPath: speed
-      value: 800
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5351800990271684110, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
       propertyPath: jumpSpeed
-      value: 2000
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351800990271684209, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351800990271684209, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
