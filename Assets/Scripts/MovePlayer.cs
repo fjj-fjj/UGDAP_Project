@@ -58,6 +58,7 @@ public class MovePlayer : MonoBehaviour
         }
         else
         {
+            Debug.Log("wwww");
             spriterenderer.sprite = onWallImage;
         }
         deltaX = Time.deltaTime * speed * Input.GetAxis("Horizontal");
@@ -78,7 +79,7 @@ public class MovePlayer : MonoBehaviour
             }
         }
         direction = getAllowJumpDirection();//获取现在玩家所允许跳跃的方向
-        if(Input.GetButtonDown("Jump"))//玩家按下跳跃键
+        if(Input.GetKeyDown(KeyCode.W))//玩家按下跳跃键
         {
             if(direction == jumpDirection.Up)//跳跃方向可以向上
             {
@@ -103,7 +104,7 @@ public class MovePlayer : MonoBehaviour
                 lastJumpDirection = direction;
             }
         }
-        else if(Input.GetButtonDown("Attack"))//玩家开始攻击
+        else if(Input.GetKeyDown(KeyCode.F))//玩家开始攻击
         {
             RaycastHit2D[] raycastHit = Physics2D.RaycastAll(transform.position, new Vector2(Mathf.Sign(deltaX), transform.position.y), 2.0f, LayerMask.GetMask("Enemy"));
             if(raycastHit.Length > 0)
@@ -118,6 +119,7 @@ public class MovePlayer : MonoBehaviour
         Debug.Log(i++ + " " + "direction:"+direction);
         if(isFalling==true&&direction == jumpDirection.Up)//如果玩家在下落并且已经到地面上了就播放结束跳跃动画
         {
+            Debug.Log("hit");
             animator.SetBool("Jumping", false);
             animator.SetBool("FinishJump", true);
         }

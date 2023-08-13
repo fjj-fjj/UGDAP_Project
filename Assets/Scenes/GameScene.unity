@@ -897,6 +897,8 @@ MonoBehaviour:
   jumpForce: 20
   jumpSpeed: 0
   maxSpeed: 0
+  normalImage: {fileID: 0}
+  onWallImage: {fileID: 0}
 --- !u!50 &2087950630
 Rigidbody2D:
   serializedVersion: 4
@@ -937,6 +939,14 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2125493923, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: normalImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 730f7c35bbadf7d44a5db91d5375a5bd, type: 3}
+    - target: {fileID: 2125493923, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: onWallImage
+      value: 
+      objectReference: {fileID: 21300000, guid: 93d8987959cc2314da85ccddd92d8e36, type: 3}
     - target: {fileID: 2125493923, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
       propertyPath: normalSprite
       value: 
