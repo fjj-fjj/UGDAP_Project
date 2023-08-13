@@ -16,7 +16,13 @@ public class MovePlayer : MonoBehaviour
     public float jumpForce = 20.0f;//施加在玩家身上并且方向向上的力的大小
     private Rigidbody2D rgb;//玩家身上的刚体
     private Collider2D collider;//玩家身上的碰撞器
+
     Animator animator;//玩家身上的动画控制器
+    AudioSource audios;
+
+
+    public AudioClip jump, Run;
+
     private bool isFalling;//判断玩家是否在下落，为播放跳跃后摇动画作准备
     private float deltaX;//玩家横向移动速度
     public float jumpSpeed;//玩家蹬墙跳的跳跃速度
@@ -37,6 +43,7 @@ public class MovePlayer : MonoBehaviour
         rgb = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audios = GetComponent<AudioSource>();
         isFalling = false;
         //dashCD = 2.0f;
         //dashTime = 2.0f;
@@ -46,9 +53,13 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         deltaX = Time.deltaTime * speed * Input.GetAxis("Horizontal");
+        
         animator.SetFloat("RunningSpeed", Mathf.Abs(deltaX));//速度达到一定程度就切换为跑步动画
+        
         if (!Mathf.Approximately(deltaX, 0))//切换玩家方向
         {
+            audios.clip = Run;
+            audios.Play();
             if (Mathf.Sign(-deltaX) == 1)
             {
                 spriterenderer.flipX = false;
@@ -63,7 +74,9 @@ public class MovePlayer : MonoBehaviour
         jumpDirection direction = getAllowJumpDirection();//获取现在玩家所允许跳跃的方向
         if(Input.GetKeyDown(KeyCode.W))//玩家按下跳跃键
         {
-            if(direction == jumpDirection.Up)//跳跃方向可以向上
+            audios.clip = jump;
+            audios.Play();
+            if (direction == jumpDirection.Up)//跳跃方向可以向上
             {
                 animator.SetBool("BackToIdle", false);//设置播放跳跃前摇动画
                 animator.SetBool("FinishJump", false);
@@ -85,6 +98,7 @@ public class MovePlayer : MonoBehaviour
                 rgb.velocity = new Vector2(rgb.velocity.x, jumpSpeed);
                 lastJumpDirection = direction;
             }
+            
         }
         //Debug.Log(i++ + " " + "direction:"+direction);
         if(isFalling==true&&direction==jumpDirection.Up)//如果玩家在下落并且已经到地面上了就播放结束跳跃动画
