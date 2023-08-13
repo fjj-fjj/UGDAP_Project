@@ -46,7 +46,7 @@ public class MovePlayer : MonoBehaviour
     void Update()
     {
         deltaX = Time.deltaTime * speed * Input.GetAxis("Horizontal");
-        animator.SetFloat("Running", Mathf.Abs(deltaX));//速度达到一定程度就切换为跑步动画
+        animator.SetFloat("RunningSpeed", Mathf.Abs(deltaX));//速度达到一定程度就切换为跑步动画
         if (!Mathf.Approximately(deltaX, 0))//切换玩家方向
         {
             if (Mathf.Sign(-deltaX) == 1)
