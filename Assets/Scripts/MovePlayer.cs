@@ -22,6 +22,11 @@ public class MovePlayer : MonoBehaviour
     public float jumpSpeed;//玩家蹬墙跳的跳跃速度
     private jumpDirection lastJumpDirection = jumpDirection.None;//玩家上一次跳跃的方向
     SpriteRenderer spriterenderer;//玩家身上的精灵渲染器
+    public float maxSpeed;
+    private bool isOnWall;
+    private jumpDirection direction;
+    public Sprite normalImage;
+    public Sprite onWallImage;
     //private float dashCD;//玩家冲刺技能的cd
     //private bool canDash;//玩家现在可以用冲刺技能
     //public float dashTime;//玩家可以处在冲刺状态的时间
@@ -38,6 +43,8 @@ public class MovePlayer : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         isFalling = false;
+        maxSpeed = 20.0f;
+        isOnWall = false;
         //dashCD = 2.0f;
         //dashTime = 2.0f;
         i = 0;
@@ -45,8 +52,20 @@ public class MovePlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (direction != jumpDirection.Left && direction != jumpDirection.Right)
+        {
+            spriterenderer.sprite = normalImage;
+        }
+        else
+        {
+            spriterenderer.sprite = onWallImage;
+        }
         deltaX = Time.deltaTime * speed * Input.GetAxis("Horizontal");
-        animator.SetFloat("Running", Mathf.Abs(deltaX));//速度达到一定程度就切换为跑步动画
+        animator.SetFloat("RunningSpeed", Mathf.Abs(deltaX));//速度达到一定程度就切换为跑步动画
+        rgb.velocity = new Vector2(
+            Mathf.Clamp(deltaX, -maxSpeed, maxSpeed),
+            rgb.velocity.y
+        );
         if (!Mathf.Approximately(deltaX, 0))//切换玩家方向
         {
             if (Mathf.Sign(-deltaX) == 1)
@@ -58,10 +77,8 @@ public class MovePlayer : MonoBehaviour
                 spriterenderer.flipX = true;
             }
         }
-        Vector2 movement = new Vector2(deltaX, rgb.velocity.y);
-        rgb.velocity = movement;//为玩家设置速度
-        jumpDirection direction = getAllowJumpDirection();//获取现在玩家所允许跳跃的方向
-        if(Input.GetKeyDown(KeyCode.W))//玩家按下跳跃键
+        direction = getAllowJumpDirection();//获取现在玩家所允许跳跃的方向
+        if(Input.GetButtonDown("Jump"))//玩家按下跳跃键
         {
             if(direction == jumpDirection.Up)//跳跃方向可以向上
             {
@@ -86,8 +103,20 @@ public class MovePlayer : MonoBehaviour
                 lastJumpDirection = direction;
             }
         }
-        //Debug.Log(i++ + " " + "direction:"+direction);
-        if(isFalling==true&&direction==jumpDirection.Up)//如果玩家在下落并且已经到地面上了就播放结束跳跃动画
+        else if(Input.GetButtonDown("Attack"))//玩家开始攻击
+        {
+            RaycastHit2D[] raycastHit = Physics2D.RaycastAll(transform.position, new Vector2(Mathf.Sign(deltaX), transform.position.y), 2.0f, LayerMask.GetMask("Enemy"));
+            if(raycastHit.Length > 0)
+            {
+                animator.Play("Attack");
+                foreach(var ray in raycastHit)
+                {
+                    Destroy(ray.collider.gameObject);
+                }
+            }
+        }
+        Debug.Log(i++ + " " + "direction:"+direction);
+        if(isFalling==true&&direction == jumpDirection.Up)//如果玩家在下落并且已经到地面上了就播放结束跳跃动画
         {
             animator.SetBool("Jumping", false);
             animator.SetBool("FinishJump", true);
@@ -105,8 +134,8 @@ public class MovePlayer : MonoBehaviour
     public void JumpReturnIdle()//这是玩家跳跃后摇动画的末尾帧事件，用于重新播放玩家空闲时的动画
     {
         isFalling = false;
-        animator.SetBool("FinishJump", false);
         animator.SetBool("BackToIdle", true);
+        animator.SetBool("FinishJump", false);
     }
 
     public void RunReturnIdle()//这是玩家跑步后摇动画的末尾帧事件，用于重新播放玩家空闲时的动画
@@ -139,6 +168,7 @@ public class MovePlayer : MonoBehaviour
         }, new RaycastHit2D[1], 0.1f, true);
         if (leftCount > 0)
         {
+            isOnWall = true;
             return jumpDirection.Right; 
         }
         int rightCount = collider.Cast(Vector2.right, new ContactFilter2D
@@ -148,6 +178,7 @@ public class MovePlayer : MonoBehaviour
         }, new RaycastHit2D[1], 0.1f, true);
         if (rightCount > 0)
         {
+            isOnWall = true;
             return jumpDirection.Left;
         }
         return jumpDirection.None;

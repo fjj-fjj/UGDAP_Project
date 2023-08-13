@@ -112,13 +112,20 @@ public class MoveEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(faceDirection ==-1)
+        if (collision.transform.tag != "Player")
         {
-            faceDirection = 1;
+            if (faceDirection == -1)
+            {
+                faceDirection = 1;
+            }
+            else if (faceDirection == 1)
+            {
+                faceDirection = -1;
+            }
         }
-        else if(faceDirection ==1)
+        else
         {
-            faceDirection = -1;
+            Destroy(gameObject);
         }
     }
 }
