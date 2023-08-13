@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5351800990271684108}
   - component: {fileID: 5351800990271684109}
   - component: {fileID: 5351800990271684106}
-  - component: {fileID: 5351800990271684110}
   - component: {fileID: 5351800990271684111}
   - component: {fileID: 5351800990271684209}
+  - component: {fileID: 2125493923}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2fd2d1c31a5308c46a24ae41438ed539, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8adba4e35287b0541b9560ccb87a86c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,21 +108,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &5351800990271684110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5351800990271684107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e243062f7afe97b46a5ffca965deccee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5000
-  jumpForce: 30
-  gravity: -50
 --- !u!61 &5351800990271684111
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -140,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.95, y: 17.16}
+    oldSize: {x: 13.19, y: 19.47}
     newSize: {x: 10.95, y: 17.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -164,9 +149,24 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 10
+  m_Material: {fileID: 6200000, guid: 4d386e7e48bd77c48b4285d8b6dc2bf6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2125493923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351800990271684107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e243062f7afe97b46a5ffca965deccee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1000
+  jumpForce: 30
+  jumpSpeed: 20
