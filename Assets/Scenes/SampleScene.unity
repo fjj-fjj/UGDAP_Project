@@ -643,7 +643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075715686462929433, guid: 3f22ec9fbd654ca4b9f5dbf9e5c02254, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.9
+      value: 6.7
       objectReference: {fileID: 0}
     - target: {fileID: 4075715686462929433, guid: 3f22ec9fbd654ca4b9f5dbf9e5c02254, type: 3}
       propertyPath: m_LocalPosition.z
@@ -860,6 +860,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -933,6 +934,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &519420033
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3edfbdf28a5b71242b18d735c9e63243, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &597467249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,7 +1352,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 773610324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1782404797}
+        m_TargetAssemblyTypeName: PauseUIController, Assembly-CSharp
+        m_MethodName: clickContinue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &773610324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,6 +1403,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773610321}
   m_CullTransparentMesh: 1
+--- !u!1001 &805335380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 805335382, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1782404789}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4887
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440485, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086442768063440489, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
+      propertyPath: m_Name
+      value: Monster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8aaba137dcb59844aa921ec04918d10d, type: 3}
 --- !u!1 &828275290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,7 +1692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1317714001}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1782404797}
+        m_TargetAssemblyTypeName: PauseUIController, Assembly-CSharp
+        m_MethodName: clickSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1317714001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,6 +1852,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1782404796, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125493923, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: moveForce
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125493923, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: attackDist
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466954708156190, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: PauseUI
+      value: 
+      objectReference: {fileID: 1798887490}
+    - target: {fileID: 4466954708156190, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+      propertyPath: pauseUI
+      value: 
+      objectReference: {fileID: 1798887490}
     - target: {fileID: 5351800990271684107, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1684,7 +1886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5351800990271684108, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1686
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 5351800990271684108, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1802,7 +2004,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1749410051}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1782404797}
+        m_TargetAssemblyTypeName: PauseUIController, Assembly-CSharp
+        m_MethodName: clickEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1749410051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,6 +2055,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749410048}
   m_CullTransparentMesh: 1
+--- !u!1 &1782404789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5351800990271684107, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+  m_PrefabInstance: {fileID: 1719805786}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1782404797 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4466954708156190, guid: 0ab6e481c9dc3274eba0d0cb177a0f84, type: 3}
+  m_PrefabInstance: {fileID: 1719805786}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782404789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ce9da5167001194f84927487d5ba8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1798887490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,12 +2084,12 @@ GameObject:
   - component: {fileID: 1798887492}
   - component: {fileID: 1798887491}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: PauseUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1798887491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1999,7 +2229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4075715686462929433, guid: 3f22ec9fbd654ca4b9f5dbf9e5c02254, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.9
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4075715686462929433, guid: 3f22ec9fbd654ca4b9f5dbf9e5c02254, type: 3}
       propertyPath: m_LocalPosition.z

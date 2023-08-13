@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 enum jumpDirection
@@ -32,6 +33,7 @@ public class MovePlayer : MonoBehaviour
     public Sprite normalImage;
     public Sprite onWallImage;
     public float moveForce;
+    public float attackDist;
     //private float dashCD;//玩家冲刺技能的cd
     //private bool canDash;//玩家现在可以用冲刺技能
     //public float dashTime;//玩家可以处在冲刺状态的时间
@@ -49,6 +51,7 @@ public class MovePlayer : MonoBehaviour
         maxSpeed = 20.0f;
         isOnWall = false;
         moveForce = 100.0f;
+        attackDist = 20.0f;
         //dashCD = 2.0f;
         //dashTime = 2.0f;
         i = 0;
@@ -67,6 +70,8 @@ public class MovePlayer : MonoBehaviour
         float velocity = Input.GetAxis("Horizontal");
         if (Mathf.Approximately(velocity, 0) == false)
         {
+            audios.clip = Run;
+            audios.Play();
             rgb.AddForce(velocity * moveForce * Vector2.right);
         }
         animator.SetFloat("RunningSpeed", Mathf.Abs(velocity * moveForce));//速度达到一定程度就切换为跑步动画
@@ -89,6 +94,8 @@ public class MovePlayer : MonoBehaviour
         {
             if(direction == jumpDirection.Up)//跳跃方向可以向上
             {
+                audios.clip = jump;
+                audios.Play();
                 Debug.Log("Direction:"+i+++"up");
                 animator.SetBool("BackToIdle", false);//设置播放跳跃前摇动画
                 animator.SetBool("FinishJump", false);
@@ -114,16 +121,15 @@ public class MovePlayer : MonoBehaviour
             }
             return;
         }
-        else if(Input.GetKeyDown(KeyCode.F))//玩家开始攻击
+        else if(Input.GetKeyDown(KeyCode.E))//玩家开始攻击
         {
-            RaycastHit2D[] raycastHit = Physics2D.RaycastAll(transform.position, new Vector2(Mathf.Sign(deltaX), transform.position.y), 2.0f, LayerMask.GetMask("Enemy"));
-            if(raycastHit.Length > 0)
+            Collider2D collider2Ds = Physics2D.OverlapBox(transform.position, new Vector2(
+                attackDist, attackDist), 0, LayerMask.GetMask("Monster"));
+            if (collider2Ds!=null)
             {
-                animator.Play("Attack");
-                foreach(var ray in raycastHit)
-                {
-                    Destroy(ray.collider.gameObject);
-                }
+                Debug.Log("Detect Monster");
+                animator.SetBool("PlayerAttack",true);
+                Destroy(collider2Ds.gameObject);
             }
             return;
         }
@@ -191,6 +197,11 @@ public class MovePlayer : MonoBehaviour
         {
             return jumpDirection.None;
         }
+    }
+
+    public void FinishAttack()
+    {
+        animator.SetBool("PlayerAttack", false);
     }
 }
 
