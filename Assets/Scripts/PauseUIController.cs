@@ -10,7 +10,8 @@ public class PauseUIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        pauseUI.SetActive(false);
+        settingUI.SetActive(false);
     }
 
     // Update is called once per frame
