@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseUIController : MonoBehaviour
 {
     public GameObject pauseUI;
+    public GameObject settingUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,8 @@ public class PauseUIController : MonoBehaviour
 
     public void clickSetting()
     {
-
+        gameObject.SetActive(false);
+        pauseUI.SetActive(false);
+        settingUI.SetActive(true);
     }
 }
