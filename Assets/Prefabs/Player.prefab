@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5351800990271684107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.9, y: 4.751872, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6837024, y: 0.63216144, z: 0.845016}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.13067913, y: 0.10756588}
+  m_Offset: {x: -0.6399108, y: 0.44093227}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.7155514, y: 15.811825}
+  m_Size: {x: 6.561433, y: 15.145092}
   m_EdgeRadius: 0
 --- !u!50 &5351800990271684209
 Rigidbody2D:
@@ -167,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e243062f7afe97b46a5ffca965deccee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
-  jumpForce: 30
   jumpSpeed: 20
+  maxSpeed: 20
+  normalImage: {fileID: 21300000, guid: 730f7c35bbadf7d44a5db91d5375a5bd, type: 3}
+  onWallImage: {fileID: 21300000, guid: 93d8987959cc2314da85ccddd92d8e36, type: 3}
+  moveForce: 0
